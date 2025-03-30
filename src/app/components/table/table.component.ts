@@ -5,6 +5,7 @@ import { EmployeeDto } from 'src/app/DTOs/Employees';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-table',
@@ -20,6 +21,7 @@ export class TableComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) private sort!: MatSort;
 
   displayedColumns: string[] = [
+    'select',
     'id',
     'firstName',
     'lastName',
@@ -29,6 +31,7 @@ export class TableComponent implements OnInit {
     'contactNumber',
   ];
   dataSource = new MatTableDataSource<EmployeeDto>();
+  selection = new SelectionModel<EmployeeDto>(true, []);
   wrapperStyle = {};
   constructor(
     private toastr: ToastrService,
@@ -68,6 +71,37 @@ export class TableComponent implements OnInit {
     localStorage.setItem('Employees-page-size', this.pageSize.toString());
   }
 
+  deleteSelected() {
+    const selectedItems = this.selection.selected;
+    if (selectedItems.length > 0) {
+      const selectedSet = new Set(selectedItems);
+
+      this.dataSource.data = this.dataSource.data.filter(
+        (employee) => !selectedSet.has(employee)
+      );
+
+      this.selection.clear();
+    } else if (this.isAllSelected()) {
+      this.dataSource.data = [];
+    }
+  }
+
+  addEmployee() {}
+
+  /** Selection section */
+  /** check if all items are already selected */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    return numSelected === this.totalRecords;
+  }
+  /** if the button 'Select all' is already selected then clear selection, otherwise select all items */
+  OnSelectAllToggle() {
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach((row) => this.selection.select(row));
+  }
+
+  /** Displayed messages section */
   public showErrorMessage(
     message: string | undefined,
     title: string | undefined

@@ -10,9 +10,17 @@
 
 
 }
-
-
 .mat-header-cell, .mat-cell {
   width: 10%;
   align-content: center;
 }
+
+.filter {
+  float: right;
+  position: relative;
+  margin-bottom: 2%;
+  overflow:hidden;
+
+}
+
+
