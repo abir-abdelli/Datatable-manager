@@ -59,6 +59,9 @@ export class TableComponent implements OnInit {
     this.loadingInProgress = false;
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+  }
   pageChangeEvent(event: PageEvent) {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
