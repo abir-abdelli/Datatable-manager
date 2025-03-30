@@ -1,42 +1,18 @@
 .table {
-
-  width: 80%;
-
-  margin: 5%;
-  overflow:scroll;
-  border: 2px solid #d6d4d4;
-  border-radius: 12px;
-  padding: 16px;
+  border-collapse: collapse;
 
 
-  .mat-header-cell {
-    font-weight: bold;
-    font-size: 0.9em;
-  }
-
-  .mat-cell {
-    font-size: 0.9em;
-    border-bottom: 1px groove #d6d4d4;
-  }
-  .mat-row:last-child .mat-cell,
-.mat-row:last-child .mat-header-cell {
-  border-bottom: none !important;
 }
-  .mat-cell,
-  .mat-footer-cell
-  .mat-header-cell {
-    word-break: break-word; //! could it solve long words problem?
-    padding-left: 20px;
-  }
+.mat-header-cell {
+  font-weight: bold;
+  font-size: 0.9em;
 
 
 
 }
-.header-page-icon {
-  padding-right: 20px;
-}
-.element {
-  background: #ffc171;
-  transition: background 0.5 ease;
 
+
+.mat-header-cell, .mat-cell {
+  width: 10%;
+  align-content: center;
 }

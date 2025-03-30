@@ -4,8 +4,8 @@
 <div style="display: flex; justify-content: space-between">
   <div class="header-page-container">Employees</div>
 </div>
-<table
-  mat-table
+<div style="margin: 5%">
+  <mat-table
   #table
   [dataSource]="dataSource"
   class="table mat-elevation-z8"
@@ -65,8 +65,8 @@
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-
+  </mat-table>
+</div>
 <div>
   <mat-paginator
     #paginator
