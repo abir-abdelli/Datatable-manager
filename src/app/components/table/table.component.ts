@@ -6,6 +6,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
+import { AddEmployeeDialogComponent } from './add-employee-dialog/add-employee-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-table',
@@ -29,13 +31,15 @@ export class TableComponent implements OnInit {
     'salary',
     'dob',
     'contactNumber',
+    'imageUrl',
   ];
   dataSource = new MatTableDataSource<EmployeeDto>();
   selection = new SelectionModel<EmployeeDto>(true, []);
   wrapperStyle = {};
   constructor(
     private toastr: ToastrService,
-    private tableService: TableService
+    private tableService: TableService,
+    public dialog: MatDialog
   ) {}
   @Input() tableStyle: any = {};
   @ViewChild(MatPaginator, { static: true }) private paginator!: MatPaginator;
@@ -86,7 +90,23 @@ export class TableComponent implements OnInit {
     }
   }
 
-  addEmployee() {}
+  addEmployee() {
+    const addEmployeeDialogRef = this.dialog.open<
+      AddEmployeeDialogComponent,
+      any,
+      EmployeeDto
+    >(AddEmployeeDialogComponent, {
+      height: '90%',
+      width: '60%',
+      disableClose: true,
+    });
+
+    addEmployeeDialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this.dataSource.data.push(data);
+      }
+    });
+  }
 
   /** Selection section */
   /** check if all items are already selected */

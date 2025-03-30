@@ -15,9 +15,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { AddEmployeeDialogComponent } from './components/table/add-employee-dialog/add-employee-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, TableComponent],
+  declarations: [AppComponent, TableComponent, AddEmployeeDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +35,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({ positionClass: 'inline' }),
   ],
   providers: [],

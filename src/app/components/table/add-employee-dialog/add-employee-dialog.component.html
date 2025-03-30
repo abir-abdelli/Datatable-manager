@@ -1,0 +1,148 @@
+<h6
+  style="
+    cursor: grab;
+    position: sticky;
+    font-size: 3%;
+    color: white;
+    margin: 0%;
+    padding: 0%;
+    height: 10px;
+    position: relative;
+  "
+  mat-dialog-title
+  class="dialog-title"
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragBoundary=".cdk-overlay-container"
+  cdkDragHandle
+>
+  .
+</h6>
+<h2 mat-dialog-title style="display: flex; justify-content: space-between">
+  Add New Employee
+</h2>
+<mat-dialog-content style="text-align: center; margin: 5%">
+  <form class="formwidth" [formGroup]="EmployeeForm">
+    <table class="fullwidth" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field appearance="legacy" class="fullwidth">
+            <input
+              matInput
+              placeholder="First Name"
+              id="firstName"
+              name="firstName"
+              formControlName="firstName"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="legacy" class="fullwidth">
+            <input
+              matInput
+              placeholder="Last Name"
+              id="lastName"
+              formControlName="lastName"
+              name="lastName"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <p>
+      <mat-form-field appearance="legacy" class="fullwidth">
+        <textarea
+          matInput
+          placeholder="email"
+          id="email"
+          name="email"
+          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+          formControlName="email"
+        ></textarea>
+      </mat-form-field>
+    </p>
+    <table class="fullwidth" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field appearance="legacy" class="fullwidth">
+            <input
+              matInput
+              placeholder="Salary"
+              id="salary"
+              name="salary"
+              type="number"
+              min="0"
+              formControlName="salary"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="legacy" class="fullwidth">
+            <input
+              matInput
+              maxlength="8"
+              placeholder="Contact Number"
+              id="contactNumber"
+              name="contactNumber"
+              type="number"
+              min="0"
+              formControlName="contactNumber"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <table class="fullwidth" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field appearance="legacy" class="fullwidth">
+            <input
+              matInput
+              placeholder="Image Url"
+              id="imageUrl"
+              name="imageUrl"
+              formControlName="imageUrl"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="legacy" class="fullwidth">
+            <input
+              matInput
+              placeholder="Age"
+              id="age"
+              name="age"
+              type="number"
+              min="0"
+              formControlName="age"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <p>
+      <mat-form-field appearance="legacy" class="fullwidth">
+        <input
+          matInput
+          placeholder="Date of Birth"
+          id="dob"
+          name="dob"
+          type="date"
+          formControlName="dob"
+        />
+      </mat-form-field>
+    </p>
+    <p>
+      <button
+        mat-icon-button
+        color="primary"
+        [disabled]="!EmployeeForm.valid"
+        type="submit"
+        (click)="onSubmit()"
+        style="font-size: large; font: bold"
+      >
+        Save
+      </button>
+    </p>
+  </form></mat-dialog-content
+>
