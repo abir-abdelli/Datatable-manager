@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [AppComponent, TableComponent],
@@ -22,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatProgressBarModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
+    MatSortModule,
     ToastrModule.forRoot({ positionClass: 'inline' }),
   ],
   providers: [],

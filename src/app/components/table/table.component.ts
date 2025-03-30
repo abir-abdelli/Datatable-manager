@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { EmployeeDto } from 'src/app/DTOs/Employees';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-table',
@@ -15,6 +16,9 @@ export class TableComponent implements OnInit {
   pageIndex = 0;
   totalRecords = 0;
   loadingInProgress: boolean = false;
+
+  @ViewChild(MatSort, { static: true }) private sort!: MatSort;
+
   displayedColumns: string[] = [
     'id',
     'firstName',
@@ -36,6 +40,7 @@ export class TableComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     this.getAllEmployees();
   }
 
@@ -49,11 +54,9 @@ export class TableComponent implements OnInit {
       },
       (error) => {
         this.showErrorMessage(error, 'Error');
-      },
-      () => {
-        this.loadingInProgress = false;
       }
     );
+    this.loadingInProgress = false;
   }
 
   pageChangeEvent(event: PageEvent) {
