@@ -1,6 +1,8 @@
 # DatatableManager
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
+npm version: 8.19.2
+node version: 18.12.1
 
 ## Development server
 
